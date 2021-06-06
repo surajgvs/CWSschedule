@@ -49,8 +49,21 @@ public class ScheduleServices {
 	//cancel schedule by id 
 	public void deleteSchedule(int sid) {
 		list = list.stream().filter(se -> se.getEmployeeid() != sid).collect(Collectors.toList());
-	}
-
+}
+       
+	//modify or replace schedule by id 
+	public void replaceschedule(Schedule sch, int id) {
+		list = (List<Schedule>) list.stream().map(s -> {
+			if(sch.getEmployeeid() == id) {
+				s.setStartDate(sch.getStartDate());
+				s.setEndDate(sch.getEndDate()); 
+				s.setTime(sch.getTime()); 
+				s.setDuration(sch.getDuration()) ;
+				s.setRepeat(sch.isRepeat());
+				s.setFrequency(sch.getFrequency()); 
+			}
+				return s;
+		}).collect(Collectors.toList());
 
 	
 }
