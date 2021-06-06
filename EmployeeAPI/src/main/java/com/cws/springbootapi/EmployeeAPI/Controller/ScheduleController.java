@@ -59,9 +59,9 @@ public void cancelschedule(@PathVariable("id") int id) {
 	  this.schservice.deleteSchedule(id);
   }
   
-/*
- * @PutMapping("/schedules/{id}") public Schedule updateschedule(@RequestBody
- * Schedule sch,@PathVariable("id") int id) {
- * this.schservice.replaceschedule(sch,id); return sch; } 
- */
+ @PutMapping("/schedules/{id}")
+  public Schedule updateschedule(@RequestBody Schedule sc,@PathVariable("iD") int iD) {
+                     this.schservice.replaceschedule(sc,iD); 
+                     return sc;
+  } 
 }
