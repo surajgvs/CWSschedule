@@ -20,38 +20,32 @@ import com.cws.springbootapi.EmployeeAPI.services.ScheduleServices;
 public class ScheduleController {
 	
 	
-	  @RequestMapping(value = "/sched", method = RequestMethod.GET)
-	  public Schedule getSchedules() { 
-		  Schedule se = new Schedule(null, null, null, null, null,false, null); 
-	  se.setEmployeeid(905972); 
-	  se.setStartDate("03 June 2021");
-	  se.setEndDate("O7 June 2021");
-      se.setTime(10.00);
-      se.setDuration(10);
-	  se.setRepeat(true); 
-	  se.setFrequency("Daily");
-	  return se; 
-	  }
-	 
+	/*
+	 * @RequestMapping(value = "/sched", method = RequestMethod.GET) public Schedule
+	 * getSchedules() { Schedule se = new Schedule(null, null, null, null,
+	 * null,false, null); se.setEmployeeid(905972); se.setStartDate("03 June 2021");
+	 * se.setEndDate("O7 June 2021"); se.setTime(10.00); se.setDuration(10);
+	 * se.setRepeat(true); se.setFrequency("Daily"); return se; }
+	 */
 
    @Autowired
    private ScheduleServices schservice;
      
    @GetMapping("/schedules")
    public List<Schedule> listschedules(){
-	   return this.schservice.getAllSchedule();
+	   return  this.schservice.getAllSchedule();
    }
    
-   @GetMapping("/schedule/{id}")
+   @GetMapping("/schedules/{id}")
    public Schedule singleschedule(@PathVariable("id") int id) {
 	   
 	   return schservice.getSchedulebyId(id);
    }
    
    @PostMapping("/schedules")
-   public Schedule postschedule(@RequestBody Schedule schedule) {
-	   Schedule s = this.schservice.addSchedule(schedule);
-	return s; 
+   public String  postschedule(@RequestBody Schedule schedule) {
+	   return  this.schservice.addSchedule(schedule);
+
    }
    
   @DeleteMapping("/schedules/{id}")
@@ -59,9 +53,11 @@ public void cancelschedule(@PathVariable("id") int id) {
 	  this.schservice.deleteSchedule(id);
   }
   
-/*
- * @PutMapping("/schedules/{id}") public Schedule updateschedule(@RequestBody
- * Schedule sch,@PathVariable("id") int id) {
- * this.schservice.replaceschedule(sch,id); return sch; } 
- */
+
+  @PutMapping("/schedules/{id}")
+  public String updateschedule(@RequestBody Schedule sc,@PathVariable("iD") int iD) {
+                  return  this.schservice.replaceschedule(sc,iD); 
+                     
+  } 
+ 
 }
