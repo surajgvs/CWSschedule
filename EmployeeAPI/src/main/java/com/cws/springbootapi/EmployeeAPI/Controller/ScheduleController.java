@@ -49,8 +49,8 @@ public class ScheduleController {
    }
    
   @DeleteMapping("/schedules/{id}")
-public void cancelschedule(@PathVariable("id") int id) {
-	  this.schservice.deleteSchedule(id);
+public String cancelschedule(@PathVariable("id") int id) {
+	return  this.schservice.deleteSchedule(id);
   }
   
 
