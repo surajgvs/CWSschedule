@@ -54,6 +54,7 @@ public void cancelschedule(@PathVariable("id") int id) {
   }
   
 
+
   @PutMapping("/schedules/{id}")
   public String updateschedule(@RequestBody Schedule sc,@PathVariable("iD") int iD) {
                   return  this.schservice.replaceschedule(sc,iD); 
@@ -61,3 +62,6 @@ public void cancelschedule(@PathVariable("id") int id) {
   } 
  
 }
+
+
+

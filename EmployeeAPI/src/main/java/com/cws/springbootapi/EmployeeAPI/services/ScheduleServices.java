@@ -56,6 +56,7 @@ public class ScheduleServices {
 }
 	
 	//cancel schedule by id 
+
 	public String deleteSchedule(int sid) {
 		/*
 		 * list = list.stream().filter(se -> se.getEmployeeid() !=
